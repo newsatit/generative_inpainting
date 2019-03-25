@@ -1,3 +1,5 @@
+# TODO: Modify inpaint.yml to set DATA_FLIST, LOG_DIR, IMG_SHAPES and other parameters.
+
 # parameters
 DATASET: 'celebahq'  # 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
 RANDOM_CROP: False
@@ -49,6 +51,11 @@ DATA_FLIST:
   imagenet: [
     'data/imagenet/train_shuffled.flist',
     'data/imagenet/validation_static_view.flist',
+  ]
+
+  memes: [
+    './data_flist/train_shuffled.flist',
+    './data_flist/validation_shuffled.flist'
   ]
 
 STATIC_VIEW_SIZE: 30
