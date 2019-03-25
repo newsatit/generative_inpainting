@@ -1,10 +1,10 @@
 # TODO: Modify inpaint.yml to set DATA_FLIST, LOG_DIR, IMG_SHAPES and other parameters.
 
 # parameters
-DATASET: 'celebahq'  # 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
+DATASET: 'memegenerator'  # 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
 RANDOM_CROP: False
 VAL: False
-LOG_DIR: full_model_celeba_hq_256
+LOG_DIR: memegenerator_model # full_model_celeba_hq_256
 MODEL_RESTORE: ''  # '20180115220926508503_jyugpu0_places2_NORMAL_wgan_gp_full_model'
 
 GAN: 'wgan_gp'  # 'dcgan', 'lsgan', 'wgan_gp', 'one_wgan_gp'
@@ -53,7 +53,7 @@ DATA_FLIST:
     'data/imagenet/validation_static_view.flist',
   ]
 
-  memes: [
+  memegenerator: [
     './data_flist/train_shuffled.flist',
     './data_flist/validation_shuffled.flist'
   ]

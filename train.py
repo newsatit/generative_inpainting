@@ -31,10 +31,10 @@ def multigpu_graph_def(model, data, config, gpu_id=0, loss_type='g'):
 
 if __name__ == "__main__":
     config = ng.Config('inpaint.yml')
-    if config.GPU_ID != -1:
-        ng.set_gpus(config.GPU_ID)
-    else:
-        ng.get_gpus(config.NUM_GPUS)
+    # if config.GPU_ID != -1:
+    #     ng.set_gpus(config.GPU_ID)
+    # else:
+    #     ng.get_gpus(config.NUM_GPUS)
     # training data
     with open(config.DATA_FLIST[config.DATASET][0]) as f:
         fnames = f.read().splitlines()
