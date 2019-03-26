@@ -28,17 +28,23 @@ if __name__ == "__main__":
 
     # print all directory names
     for dir_item in dirs:
+        if (dir_item == '.DS_Store'):
+            continue
         # modify to full path -> directory
         dir_item = args.folder_path + "/" + dir_item
         # print(dir_item)
 
         training_folder = os.listdir(dir_item + "/training")
         for training_item in training_folder:
+            if (training_item == '.DS_Store'):
+                continue            
             training_item = dir_item + "/training" + "/" + training_item
             training_file_names.append(training_item)
 
         validation_folder = os.listdir(dir_item + "/validation")
         for validation_item in validation_folder:
+            if (validation_item == '.DS_Store'):
+                continue            
             validation_item = dir_item + "/validation" + "/" + validation_item
             validation_file_names.append(validation_item)
     # print all file paths
