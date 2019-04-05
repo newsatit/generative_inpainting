@@ -287,8 +287,9 @@ class InpaintCAModel(Model):
         """
         """
         # generate mask, 1 represents masked point
-        bbox = (tf.constant(config.HEIGHT//2), tf.constant(config.WIDTH//2),
-                tf.constant(config.HEIGHT), tf.constant(config.WIDTH))
+        # bbox = (tf.constant(config.HEIGHT//2), tf.constant(config.WIDTH//2),
+        #         tf.constant(config.HEIGHT), tf.constant(config.WIDTH))
+        bbox = random_bbox(config)
         return self.build_infer_graph(batch_data, config, bbox, name)
 
 
