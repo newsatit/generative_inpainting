@@ -6,6 +6,7 @@ RANDOM_CROP: True
 VAL: True
 LOG_DIR: memegenerator_model # full_model_celeba_hq_256
 MODEL_RESTORE: '' #'20190328070153442478_e77d4b06b187_memegenerator_NORMAL_wgan_gp_memegenerator_model' # '20180115220926508503_jyugpu0_places2_NORMAL_wgan_gp_full_model'
+NUM_MASKS: 1000 #number of masks that can be applied for training
 
 GAN: 'wgan_gp'  # 'dcgan', 'lsgan', 'wgan_gp', 'one_wgan_gp'
 PRETRAIN_COARSE_NETWORK: False
@@ -22,13 +23,13 @@ PADDING: 'SAME'
 # training
 NUM_GPUS: 1
 GPU_ID: -1  # -1 indicate select any available one, otherwise select gpu ID, e.g. [0,1,3]
-TRAIN_SPE: 10000
+TRAIN_SPE: 220 # 1000 TODO:
 MAX_ITERS: 1000000
 VIZ_MAX_OUT: 10
-GRADS_SUMMARY: False
-GRADIENT_CLIP: False
+GRADS_SUMMARY: False # TODO: 
+GRADIENT_CLIP: False # TODO: 
 GRADIENT_CLIP_VALUE: 0.1
-VAL_PSTEPS: 1000
+VAL_PSTEPS: 220 # 1000 TODO:
 
 # data
 DATA_FLIST:
@@ -58,12 +59,12 @@ DATA_FLIST:
     './data_flist/validation_shuffled.flist'
   ]
 
-STATIC_VIEW_SIZE: 30
-IMG_SHAPES: [128, 128, 3]
-HEIGHT: 64
-WIDTH: 64
-MAX_DELTA_HEIGHT: 16
-MAX_DELTA_WIDTH: 16
+STATIC_VIEW_SIZE: 10
+IMG_SHAPES: [256, 256, 3]
+HEIGHT: 128 # TODO:
+WIDTH: 128  # TODO:
+MAX_DELTA_HEIGHT: 32 # TODO:
+MAX_DELTA_WIDTH: 32 # TODO:
 BATCH_SIZE: 16
 VERTICAL_MARGIN: 0
 HORIZONTAL_MARGIN: 0
