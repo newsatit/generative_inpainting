@@ -4,9 +4,11 @@ import cv2
 import numpy as np
 import tensorflow as tf
 import neuralgym as ng
+import matplotlib.pyplot as plt
 
 from inpaint_model import InpaintCAModel
 
+import label_detection
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--image', default='', type=str,
@@ -20,13 +22,14 @@ parser.add_argument('--checkpoint_dir', default='', type=str,
 
 
 if __name__ == "__main__":
-    ng.get_gpus(1)
+    # ng.get_gpus(1)
     args = parser.parse_args()
 
     model = InpaintCAModel()
     image = cv2.imread(args.image)
     mask = cv2.imread(args.mask)
 
+    image = cv2.resize(image, (256, 256))
     assert image.shape == mask.shape
 
     h, w, _ = image.shape
@@ -59,3 +62,18 @@ if __name__ == "__main__":
         print('Model loaded.')
         result = sess.run(output)
         cv2.imwrite(args.output, result[0][:, :, ::-1])
+
+    # plot original images, mask, image with with removed region, predicted image
+    
+    image = cv2.cvtColor(np.squeeze(image, axis=0), cv2.COLOR_BGR2RGB)
+    mask = cv2.cvtColor(np.squeeze(mask, axis=0), cv2.COLOR_BGR2RGB)
+    masked_image = cv2.subtract(image, mask)
+    output = cv2.cvtColor(result[0][:, :, ::-1], cv2.COLOR_BGR2RGB)
+    _, axarr = plt.subplots(2,2)
+    axarr[0,0].imshow(image)
+    axarr[0,1].imshow(mask)
+    axarr[1,0].imshow(masked_image)
+    axarr[1,1].imshow(output)
+    print(image)
+    print(mask)
+    plt.show()

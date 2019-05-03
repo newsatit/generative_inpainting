@@ -23,4 +23,5 @@ def detect_text(path):
 
         print('bounds: {}'.format(','.join(vertices)))
 
-detect_text('examples/if-you-think-were-bad-try-looking-in-the-mirror.jpg')
+if __name__ == "__main__":
+    detect_text('examples/if-you-think-were-bad-try-looking-in-the-mirror.jpg')
