@@ -55,6 +55,12 @@ python test.py --image examples/imagenet/imagenet_patches_ILSVRC2012_val_0000082
 
 Follow instructions from the following link to enable the testing for text removal with Clound Vision API (for text detection): [Cloud Vision API](https://cloud.google.com/vision/docs/quickstart-client-libraries#client-libraries-install-python)
 
+```bash
+# Set the environment variable GOOGLE_APPLICATION_CREDENTIALS to the file path of the JSON file that contains your service #account key. 
+# This variable only applies to your current shell session, so if you open a new session, set the variable again.
+export GOOGLE_APPLICATION_CREDENTIALS=your_json_path
+```
+
 ## TensorBoard
 
 Visualization on [TensorBoard](https://www.tensorflow.org/programmers_guide/summaries_and_tensorboard) for training and validation is supported. Run `tensorboard --logdir model_logs --port 6006` to view training progress.
