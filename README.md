@@ -51,6 +51,10 @@ python test.py --image examples/imagenet/imagenet_patches_ILSVRC2012_val_0000082
 
 **Note:** Please make sure the mask file completely cover the masks in input file. You may check it with saving a new image to visualize `cv2.imwrite('new.png', img - mask)`.
 
+## Cloud Vision API
+
+Follow instructions from the following link to enable the testing for text removal with Clound Vision API (for text detection): [Cloud Vision API](https://cloud.google.com/vision/docs/quickstart-client-libraries#client-libraries-install-python)
+
 ## TensorBoard
 
 Visualization on [TensorBoard](https://www.tensorflow.org/programmers_guide/summaries_and_tensorboard) for training and validation is supported. Run `tensorboard --logdir model_logs --port 6006` to view training progress.
