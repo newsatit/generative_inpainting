@@ -5,10 +5,11 @@ import numpy as np
 import tensorflow as tf
 import neuralgym as ng
 import matplotlib.pyplot as plt
+from PIL import Image, ImageDraw
 
 from inpaint_model import InpaintCAModel
 
-import label_detection
+from label_detection import get_text_mask
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--image', default='', type=str,
@@ -27,12 +28,16 @@ if __name__ == "__main__":
 
     model = InpaintCAModel()
     image = cv2.imread(args.image)
-    mask = cv2.imread(args.mask)
-
     image = cv2.resize(image, (256, 256))
-    assert image.shape == mask.shape
+    if (args.mask != ""):
+        mask = cv2.imread(args.mask)
+        assert image.shape == mask.shape
+    
+    h, w, _ = image.shape    
+    
+    mask = get_text_mask(args.image, h, w)
+    mask = cv2.cvtColor(mask,cv2.COLOR_GRAY2RGB)
 
-    h, w, _ = image.shape
     grid = 8
     image = image[:h//grid*grid, :w//grid*grid, :]
     mask = mask[:h//grid*grid, :w//grid*grid, :]
@@ -69,11 +74,13 @@ if __name__ == "__main__":
     mask = cv2.cvtColor(np.squeeze(mask, axis=0), cv2.COLOR_BGR2RGB)
     masked_image = cv2.subtract(image, mask)
     output = cv2.cvtColor(result[0][:, :, ::-1], cv2.COLOR_BGR2RGB)
-    _, axarr = plt.subplots(2,2)
-    axarr[0,0].imshow(image)
-    axarr[0,1].imshow(mask)
-    axarr[1,0].imshow(masked_image)
-    axarr[1,1].imshow(output)
-    print(image)
-    print(mask)
+    _, axarr = plt.subplots(1,4)
+    axarr[0].set_title("Original Image")
+    axarr[0].imshow(image)
+    axarr[1].set_title("Mask for the text detected")
+    axarr[1].imshow(mask)
+    axarr[2].set_title("Image with detected text removed")
+    axarr[2].imshow(masked_image)
+    axarr[3].set_title("Image with removed regions filled")
+    axarr[3].imshow(output)
     plt.show()
