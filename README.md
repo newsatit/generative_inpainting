@@ -8,8 +8,8 @@ Recover the true image of meme image (with text on it)
 
 Examples:
 
-<img src="screenshots/ex-1.png" width="700"/>
-<img src="screenshots/ex-2.png" width="700"/>
+<img src="screenshots/ex-1.png" width="900"/>
+<img src="screenshots/ex-2.png" width="900"/>
 
 ## Run
 
