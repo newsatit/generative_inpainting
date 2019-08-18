@@ -1,10 +1,10 @@
 # Meme Image Recovery
 
-Recover the true image of meme image (with text on it)
+Recover the true image of meme image (with text on it). This repo is based on [Generative Image Inpainting with Contextual Attention, CVPR 2018](https://github.com/JiahuiYu/generative_inpainting)
 
 **The Pipeline consists of two stages**:
 1. Remove the text regions of the image using [Cloud Vision API](https://cloud.google.com/vision/).
-2. Generate image pixels of the removed regions based on the surrounding image pixels using pre-trained [Generative Image Inpainting with Contextual Attention, CVPR 2018](https://github.com/JiahuiYu/generative_inpainting)
+2. Generate image pixels of the removed regions based on the surrounding image pixels using pre-trained image inpainting model from [Generative Image Inpainting with Contextual Attention, CVPR 2018](https://github.com/JiahuiYu/generative_inpainting)
 
 Examples:
 
